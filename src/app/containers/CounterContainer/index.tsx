@@ -2,9 +2,9 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { setCounter } from '@app/src/actions/counter';
 import { Counter } from '@app/src/app/components/Counter';
-import { store } from '@app/src/store';
 
 interface ICounterContainerProps {
+  counter: number;
   setCounter(value: number): void,
 }
 
@@ -43,4 +43,7 @@ const mapDispatchToProps = (dispatch: any) => ({
   setCounter: (value: number) => dispatch(setCounter(value))
 });
 
-export const CounterContainerConnected = connect(mapStateToProps, mapDispatchToProps)(CounterContainer);
+export const CounterContainerConnected = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CounterContainer);
