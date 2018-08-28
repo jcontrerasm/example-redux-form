@@ -1,9 +1,6 @@
-export const SET_COUNTER = 'SET_COUNTER';
+import { Action } from './interface';
 
-type Action = {
-  type: string;
-  payload?: any;
-}
+export const SET_COUNTER = 'SET_COUNTER';
 
 // ActionCreator
 export const setCounter = (counter: number): Action => ({
