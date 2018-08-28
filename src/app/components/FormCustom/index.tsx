@@ -10,13 +10,23 @@ const asyncValidate = validationConfig(schema);
 
 export let FormCustom = (props: any) => {
   const { handleSubmit, pristine, reset, submitting } = props;
-  console.log(props);
+
   return(
     <FormWrapper onSubmit={handleSubmit}>
       <h2>Formulario con validaciones</h2>
       <FormRow>
         <div>
-        <Field name="firstName" type="text" component={RenderField} label="Nombre: "/>
+          <Field name="firstName" type="text" component={RenderField} label="Nombre: "/>
+        </div>
+      </FormRow>
+      <FormRow>
+        <div>
+          <Field name="salaryMin" type="text" component={RenderField} label="Salario minimo: "/>
+        </div>
+      </FormRow>
+      <FormRow>
+        <div>
+          <Field name="salaryMax" type="text" component={RenderField} label="Salario máximo: "/>
         </div>
       </FormRow>
       <FormRow>

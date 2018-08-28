@@ -4,6 +4,7 @@ interface IRenderFieldProps {
   input: object,
   label: string,
   type: string,
+  content: JSX.Element
   meta: {
     touched: boolean,
     error: boolean

@@ -17,14 +17,14 @@ export const ERROR_MESSAGES = {
 };
 
 export const REGEX_VALIDATION = {
-  string: '^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$',
-  number: '^[0-9]+$',
-  alphanumeric: '^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$',
-  alphanumericAddress: '^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ\.\\- ]+$',
+  string: new RegExp('^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$'),
+  number: new RegExp('^[0-9]+$'),
+  alphanumeric: new RegExp('^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$'),
+  alphanumericAddress: new RegExp('^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ\.\\- ]+$'),
 };
 
-export const validationConfig = (schema: any) => (values: any) => {
-  return new Promise((resolve: any, reject: any) => {
+export const validationConfig = (schema: any) => (values: any) => (
+  new Promise((resolve: any, reject: any) => {
     schema.validate(values, {abortEarly: false})
       .then((values: any) => resolve())
       .catch((errors: any) => {
@@ -34,7 +34,7 @@ export const validationConfig = (schema: any) => (values: any) => {
         })
         reject(reduxFormErrors);
       })
-  });
-};
+  })
+);
 
 export const getFieldValidation = (schema: any) => Object.keys(schema.fields);
