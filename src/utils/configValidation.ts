@@ -23,18 +23,18 @@ export const REGEX_VALIDATION = {
   alphanumericAddress: new RegExp('^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ\.\\- ]+$'),
 };
 
-export const validationConfig = (schema: any) => (values: any) => (
-  new Promise((resolve: any, reject: any) => {
-    schema.validate(values, {abortEarly: false})
-      .then((values: any) => resolve())
+export const validationConfig = (schema: any) => (values: any) => {
+  return new Promise((resolve: any, reject: any) => {
+    schema.validate(values, { abortEarly: false })
+      .then((values: any) => resolve(values))
       .catch((errors: any) => {
         let reduxFormErrors: any = {};
-        errors.inner.forEach((error: any) => {
+        errors.inner.map((error: any) => {
           reduxFormErrors[error.path] = error.message;
-        })
+        });
         reject(reduxFormErrors);
       })
   })
-);
+};
 
 export const getFieldValidation = (schema: any) => Object.keys(schema.fields);
