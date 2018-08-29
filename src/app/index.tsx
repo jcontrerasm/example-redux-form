@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CounterContainerConnected } from '@app/src/app/containers/CounterContainer';
 // import { FormContainer } from '@app/src/app/containers/FormContainer';
-import { FormCustomContainer } from '@app/src/app/containers/FormCustomContainer';
+import { FormCustomContainerConnect } from '@app/src/app/containers/FormCustomContainer';
 
 export class App extends React.Component<{}, {}> {
   render() {
@@ -9,7 +9,7 @@ export class App extends React.Component<{}, {}> {
       <React.Fragment>
         <CounterContainerConnected />
         {/* <FormContainer /> */}
-        <FormCustomContainer />
+        <FormCustomContainerConnect />
       </React.Fragment>
     );
   }

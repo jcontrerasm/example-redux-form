@@ -1,18 +1,13 @@
 import * as React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field } from 'redux-form';
 import { FormWrapper, FormRow } from './index.style';
 import { RenderField } from '@app/src/app/components/RenderField';
-import { schema } from '@app/src/app/components/FormCustom/schema';
-import { validationConfig, getFieldValidation } from '@app/src/utils/configValidation';
 
-const fields = getFieldValidation(schema);
-const asyncValidate = validationConfig(schema);
-
-export let FormCustom = (props: any) => {
-  const { handleSubmit, pristine, reset, submitting } = props;
+export const FormCustom = (props: any) => {
+  const { onSubmit, handleSubmit, pristine, reset, submitting } = props;
 
   return(
-    <FormWrapper onSubmit={handleSubmit}>
+    <FormWrapper onSubmit={handleSubmit(onSubmit)}>
       <h2>Formulario con validaciones</h2>
       <FormRow>
         <div>
@@ -38,9 +33,3 @@ export let FormCustom = (props: any) => {
     </FormWrapper>
   );
 };
-
-FormCustom = reduxForm({
-  form: 'formCustom',
-  fields,
-  asyncValidate,
-})(FormCustom);
