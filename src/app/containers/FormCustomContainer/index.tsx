@@ -26,15 +26,20 @@ export class FormCustomContainer extends React.Component<IFormContainerProps, {}
 
   onSubmit(values: any) {
     console.log('values', values);
+    // this.props.validate(schema)
   }
 
   componentDidMount() {
     const data = {
-      firstName: 'Juan Carlos',
+      firstName: '',
       salaryMin: 123,
       salaryMax: ''
     }
-    this.props.setFormData(data);
+    // console.log(this.props);
+    // this.props.setFormData(data);
+    this.props.initialize({
+      firstName: 'aaa12',
+    });
   }
 
   render() {
@@ -55,7 +60,6 @@ export let FormCustomContainerConnect = reduxForm({
   form: 'formCustom',
   fields,
   asyncValidate,
-  enableReinitialize: true
 })(FormCustomContainer);
 
 const mapStateToProps = ({ formData }) => ({ initialValues: formData });
